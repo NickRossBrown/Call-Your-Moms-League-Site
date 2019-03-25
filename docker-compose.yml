@@ -1,0 +1,15 @@
+version: '3'
+services: 
+  web-react-app:
+    build: 
+    # specifies where we want all the files and folders to be pulled from
+      context: .
+      # where to find the docker file
+      dockerfile: Dockerfile.dev
+    ports: 
+      - "3000:3000"
+    volumes: 
+      # do not try to map a folder up against app node_modules inside the container
+      - /app/node_modules
+      # . current folder outside the container to the app folder : insider the container
+      - .:/app
