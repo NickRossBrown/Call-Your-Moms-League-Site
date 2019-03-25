@@ -13,3 +13,12 @@ services:
       - /app/node_modules
       # . current folder outside the container to the app folder : insider the container
       - .:/app
+  tests: 
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes: 
+      - /app/node_modules
+      - .:/app
+    # to override a command inside a dockerfile
+    command: ["npm", "run", "test"] 
