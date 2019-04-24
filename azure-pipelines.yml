@@ -19,7 +19,6 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 - script: docker build -t $(dockerId)/$(imageName) .
-- script:  docker run $(dockerId)/$(imageName) npm run test -- --coverage
     npm install
     npm run build
   displayName: 'npm install and build'
