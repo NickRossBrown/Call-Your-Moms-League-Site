@@ -9,17 +9,15 @@ trigger:
 pool:
   vmImage: 'Ubuntu-16.04'
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
-
 variables:
   dockerId: nickrossbrown
   imageName: call-your-moms 
 
 steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
 - script: docker build -t $(dockerId)/$(imageName) .
 - script:  docker run $(dockerId)/$(imageName) npm run test -- --coverage
     npm install
